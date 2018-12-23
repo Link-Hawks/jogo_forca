@@ -49,11 +49,49 @@
                     </div>
                 </form>
                 <div id="palavras"></div>
+                <div id="botoes-chute"></div>
             </div>
         </main>
         <footer></footer>
         <script src="js/libs/jquery-3.3.1.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Jogo.js"></script>
+        <script>
+                let campoBotoes = $("#botoes-chute");
+                for(numLetra=65;numLetra<=90;numLetra++){
+                    let letra = String.fromCharCode(numLetra);
+                    let id = "botao-chute"+letra;
+                    let $botao = $("<button>").attr("id",id).attr("class","btn btn-secundary").attr("onclick","chutarEAtualizar(id)").text(letra);
+                    campoBotoes.append($botao);
+                }
+            
+        </script>
+
+        <script>
+            let interface = new Interface();
+            let jogo = new Jogo();
+
+            $("#btn-palavra-chave").click(function(event){        
+                let impedirReloading = event.preventDefault();
+                jogo.palavraChave = $("#palavra-chave").val();  
+                interface.delCampoPalavraChave(jogo.lacunasString());
+                interface.criaPalavras(jogo.lacunas);
+
+            });
+
+            function chutarEAtualizar(chute){
+                let botao = $("#"+chute);
+                let letraBotao = botao.text();
+                if(jogo.processaChute(letraBotao)){
+                    botao.addClass("btn-success").attr("disabled",true);
+                }else{
+                    botao.addClass("btn-danger").attr("disabled",true);
+                }
+                interface.atualizaPalavras(jogo.lacunasString())
+                
+            }
+
+            
+        </script>
     </body>
 </html>

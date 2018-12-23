@@ -3,8 +3,7 @@ class Jogo{
     constructor(){
         this._palavraChave,
         this._palavraChavePorLetra,
-        this._lacunas,
-        this._etapa = 1;
+        this._lacunas;
     }
 
     set palavraChave(palavraChave){
@@ -14,20 +13,15 @@ class Jogo{
         this._palavraChave = palavraChaveSemEspaco;
         this._palavraChavePorLetra = palavraChaveSemEspaco.split("");
         this.criaLacunas(this._palavraChavePorLetra);
-        this.proximaEtapa();
     }
 
     get palavraChave(){
         return this._palavraChave;
     }
 
-    proximaEtapa(){
-        this._etapa++;
-    }
 
     criaLacunas(arrayPalavra){
         this._lacunas = arrayPalavra.map(function(letra){
-            console.log(letra)
             let temEspacoEmBranco = /\s/.test(letra)
             if(temEspacoEmBranco || letra == "-"){
                 return letra;
@@ -40,6 +34,7 @@ class Jogo{
     ganhou(){
         this._lacunas = this._palavraChavePorLetra;
         console.log("Ganhou o jogo!")
+        return true;
     }
 
     verificaAcertouLetra(chute){
@@ -57,13 +52,18 @@ class Jogo{
             }
         });
 
-        if(acertouLetra){
-            this.acertouLetra();
-        }
-
         if(!errouPalavra){
             this.ganhou();
+            return true;
         }
+        
+        if(acertouLetra){
+            this.acertouLetra();
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     acertouLetra(){
@@ -74,15 +74,23 @@ class Jogo{
         let chuteMaiusculo = chute.toUpperCase();
         if (chute.length > 1){
             if(chuteMaiusculo == this._palavraChave)
-                this.acertou();
+                return this.acertou();
+            else
+                return false;
         }else{
-            this.verificaAcertouLetra(chuteMaiusculo)
+            return this.verificaAcertouLetra(chuteMaiusculo)
         }
-        this.proximaEtapa();
     }
 
-    get etapa(){
-        return this._etapa;
+    get palavraChavePorLetra(){
+        return this._palavraChavePorLetra;
+    }
+
+    lacunasString(){ 
+        console.log("teseeet");
+               
+        console.log(this._lacunas.join(""))
+        return this._lacunas.join("");
     }
 
     get lacunas(){

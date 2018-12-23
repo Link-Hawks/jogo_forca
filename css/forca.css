@@ -52,3 +52,15 @@
     font-size:38px;
     text-align: center;
 }
+
+#botoes-chute{
+    display:none;
+}
+
+#botoes-chute button{
+    margin: 5px;
+}
+
+.espaco{
+    margin-right:30px;
+}

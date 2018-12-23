@@ -1,38 +1,42 @@
-$("#btn-palavra-chave").click(guardaPalavraChave);
+class Interface{
+
+    constructor(){
+    }
 
 
-function guardaPalavraChave(event){
-    let impedirReloading = event.preventDefault();
-    let $palavraChave = $("#palavra-chave").val();
-    let arrayPalavraSemEspaco = $palavraChave.trim().split(/\s+/);
-    let palavraPorLetra = arrayPalavraSemEspaco.join(" ").split("");
-    delCampoPalavraChave(palavraPorLetra);
-}
+    delCampoPalavraChave(palavra){
+        let tempoRemocao = 600;
+        let $formulario = $("#form-palChave");
+        $formulario.fadeOut(tempoRemocao);
+        setTimeout(function(){
+            $formulario.remove();
+        },tempoRemocao);
+    }
 
-function delCampoPalavraChave(palavra){
-    let tempoRemocao = 600;
-    let $formulario = $("#form-palChave");
-    $formulario.fadeOut(tempoRemocao);
-    setTimeout(function(){
-        $formulario.remove();
-        mostraPalavras(palavra);
-    },tempoRemocao);
-}
+    get jogo(){
+        return this._jogo;
+    }
 
-function mostraPalavras(palavra){
-    let  $divPalavras = $("#palavras");
-    $(palavra).each(function(){
-        let letra = this;
-        let conteudo;
-        let temEspacoEmBranco = /\s/.test(letra)
-        if(temEspacoEmBranco)
-            conteudo = " ";
-        else if(letra == "-")
-            conteudo = letra;
-        else
-            conteudo = "_";       
+    criaPalavras(palavra){
+        let $divPalavras = $("#palavras");
+        let $paragrafoSecreto = $("<p>").attr("id","fraseSecreta");
+        let $fraseSecreta = "";
+        $divPalavras.append($paragrafoSecreto);            
+            $(palavra).each(function(index){
+               $fraseSecreta += this;
+            })
+        $paragrafoSecreto.text($fraseSecreta);
+        $("#botoes-chute").toggle();
+    }
 
-        let $letraChave = $("<span>").text(conteudo);
-        $($divPalavras).append($letraChave);
-    })
+    atualizaPalavras(palavras){ 
+        $(".espaco").remove();
+        $("#fraseSecreta").remove();
+        console.log(palavras)
+        palavras.split(" ").forEach(palavra => {
+            let palavraIsolada = $("<span>").text(palavra).addClass("espaco");
+            $("#palavras").append(palavraIsolada);
+        });
+    }
+
 }
