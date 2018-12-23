@@ -6,7 +6,8 @@
 .conteudo-jogo{
     margin-top:50px;
     padding:50px;
-    border-top:1px solid rgba(0,0,0,.1)
+    border-top:1px solid rgba(0,0,0,.1);
+    border-bottom:1px solid rgba(0,0,0,.1);
 }
 
 .form-inline{
@@ -45,3 +46,8 @@
     border-color: indianred;
 }
 
+#palavras{
+    letter-spacing: 9px;
+    font-size:38px;
+    text-align: center;
+}
