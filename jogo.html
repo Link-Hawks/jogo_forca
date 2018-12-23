@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/forca.css">
+        <meta charset="UTF-8">
+        <title>Hawks Hangman</title>
+    </head>
+    <body>
+        <header>
+            <div class="menu">
+                <nav class="navbar fixed-top navbar-dark navbar-expand-lg  bg-dark">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/brand.png" width="42" height="30" class="d-inline-block align-top" alt="Logo Hawks Enterprise">
+                        Hawks Hangman
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav  mr-auto">
+                            <a class="nav-item nav-link " href="#">Home </a>
+                            <a class="nav-item nav-link active" href="#">Forca <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="#">Placar</a>
+                            <a class="nav-item nav-link" href="#">Sobre</a>
+                        </div>
+                        <div class="navbar-nav" id="redes-sociais">
+                                <a class="nav-item nav-link" href="#"><i class="fab fa-github-alt fa-w-14 fa-2x"></i> </a>
+                                <a class="nav-item nav-link" href="#"><i class="fab fa-linkedin fa-w-14 fa-2x"></i></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="container cabecalho-jogo">
+                <h1 class="bd-title">Jogo da Forca</h1>
+                <p>Teste suas habilidades neste desafiante jogo! Descubra a palavra secreta antes de ficar com a corda no pescoço! </p>
+            </div>
+            <div class="container conteudo-jogo">
+                <img src="img/hangman.png" alt="Forca">
+                <form class="form-inline">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Palavra Secreta" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+</html>

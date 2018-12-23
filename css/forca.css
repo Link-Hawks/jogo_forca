@@ -1,0 +1,47 @@
+.cabecalho-jogo{
+    margin-top:100px;
+    border:1px solid rgba(0,0,0,.3)
+}
+
+.conteudo-jogo{
+    margin-top:50px;
+    padding:50px;
+    border-top:1px solid rgba(0,0,0,.1)
+}
+
+.form-inline{
+    margin-top:15px;
+}
+
+.bd-title{
+    font-size:3rem;
+    color:indianred;
+}
+
+.fa-github-alt:hover{
+    color:#D44A40;
+}
+
+.fa-linkedin:hover{
+    color:#17a2b8;
+}
+
+.navbar{
+    padding-left:5%;
+    padding-right:5%;
+}
+
+.btn-outline-secondary:hover{
+    background-color: indianred;
+}
+
+.form-control:focus{
+    border-color:lightgray;
+    box-shadow: 0 0 0 0.2rem rgba(0,0,0,.25);
+}
+
+.btn-outline-secondary{
+    color:indianred;
+    border-color: indianred;
+}
+
