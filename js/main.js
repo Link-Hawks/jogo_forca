@@ -2,32 +2,37 @@ $("#btn-palavra-chave").click(guardaPalavraChave);
 
 
 function guardaPalavraChave(event){
-    event.preventDefault();
-    let palavraChave = $("#palavra-chave").val();
-    let arrayPalavraSemEspaco = palavraChave.trim().split(/\s+/);
+    let impedirReloading = event.preventDefault();
+    let $palavraChave = $("#palavra-chave").val();
+    let arrayPalavraSemEspaco = $palavraChave.trim().split(/\s+/);
     let palavraPorLetra = arrayPalavraSemEspaco.join(" ").split("");
+    delCampoPalavraChave(palavraPorLetra);
+}
+
+function delCampoPalavraChave(palavra){
     let tempoRemocao = 600;
-    let formulario = $(this).parent().parent().parent();
-    formulario.fadeOut(tempoRemocao);
+    let $formulario = $("#form-palChave");
+    $formulario.fadeOut(tempoRemocao);
     setTimeout(function(){
-        formulario.remove();
-        mostraPalavras(palavraPorLetra);
+        $formulario.remove();
+        mostraPalavras(palavra);
     },tempoRemocao);
 }
 
 function mostraPalavras(palavra){
-    let divPalavras = $("#palavras");
+    let  $divPalavras = $("#palavras");
     $(palavra).each(function(){
+        let letra = this;
         let conteudo;
-        if(/\s/.test(this)){
+        let temEspacoEmBranco = /\s/.test(letra)
+        if(temEspacoEmBranco)
             conteudo = " ";
-        }else if(this == "-"){
-            conteudo = this;
-        }else{
-            conteudo = "_";
-        }
+        else if(letra == "-")
+            conteudo = letra;
+        else
+            conteudo = "_";       
 
-        let letra = $("<span>").text(conteudo);
-        $(divPalavras).append(letra);
+        let $letraChave = $("<span>").text(conteudo);
+        $($divPalavras).append($letraChave);
     })
 }
