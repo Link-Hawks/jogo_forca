@@ -1,9 +1,10 @@
 class Jogo{
 
-    constructor(){
+    constructor(sprite){
         this._palavraChave,
         this._palavraChavePorLetra,
         this._lacunas;
+        this._sprite = sprite;
     }
 
     set palavraChave(palavraChave){
@@ -33,7 +34,8 @@ class Jogo{
 
     ganhou(){
         this._lacunas = this._palavraChavePorLetra;
-        console.log("Ganhou o jogo!")
+        alert("Parabéns, Ganhou o jogo!")
+        $("#botoes-chute button").attr("disabled",true);
         return true;
     }
 
@@ -56,14 +58,27 @@ class Jogo{
             this.ganhou();
             return true;
         }
-        
+
         if(acertouLetra){
             this.acertouLetra();
             return true;
         }else{
+            this.errouLetra();
             return false;
         }
 
+    }
+
+    errouLetra(){
+        this._sprite.proximo();
+        if(!this._sprite.temProximo()){
+            this.perdeu();
+        }
+    }
+
+    perdeu(){        
+        alert("que pena, você morreu")
+        $("#botoes-chute button").attr("disabled",true);
     }
 
     acertouLetra(){

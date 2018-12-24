@@ -39,7 +39,7 @@
                 <p>Teste suas habilidades neste desafiante jogo! Descubra a palavra secreta antes de ficar com a corda no pescoço! </p>
             </div>
             <div class="container conteudo-jogo">
-                <img src="img/hangman.png" alt="Forca">
+                <img src="img/hangman-0.png" alt="Forca" id="forca">
                 <form class="form-inline" id="form-palChave">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="palavra-chave" placeholder="Palavra Secreta" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -56,12 +56,16 @@
         <script src="js/libs/jquery-3.3.1.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Jogo.js"></script>
+        <script src="js/Sprite.js"></script>
         <script>
                 let campoBotoes = $("#botoes-chute");
                 for(numLetra=65;numLetra<=90;numLetra++){
                     let letra = String.fromCharCode(numLetra);
                     let id = "botao-chute"+letra;
-                    let $botao = $("<button>").attr("id",id).attr("class","btn btn-secundary").attr("onclick","chutarEAtualizar(id)").text(letra);
+                    let $botao = $("<button>").attr("id",id)
+                                 .attr("class","btn btn-secundary")
+                                 .attr("onclick","chutarEAtualizar(id)")
+                                 .text(letra);
                     campoBotoes.append($botao);
                 }
             
@@ -69,7 +73,8 @@
 
         <script>
             let interface = new Interface();
-            let jogo = new Jogo();
+            let sprite = new Sprite();
+            let jogo = new Jogo(sprite);
 
             $("#btn-palavra-chave").click(function(event){        
                 let impedirReloading = event.preventDefault();
@@ -83,9 +88,11 @@
                 let botao = $("#"+chute);
                 let letraBotao = botao.text();
                 if(jogo.processaChute(letraBotao)){
-                    botao.addClass("btn-success").attr("disabled",true);
+                    botao.addClass("btn-success")
+                         .attr("disabled",true);
                 }else{
-                    botao.addClass("btn-danger").attr("disabled",true);
+                    botao.addClass("btn-danger")
+                          .attr("disabled",true);
                 }
                 interface.atualizaPalavras(jogo.lacunasString())
                 

@@ -1,9 +1,5 @@
 class Interface{
 
-    constructor(){
-    }
-
-
     delCampoPalavraChave(palavra){
         let tempoRemocao = 600;
         let $formulario = $("#form-palChave");
@@ -11,10 +7,6 @@ class Interface{
         setTimeout(function(){
             $formulario.remove();
         },tempoRemocao);
-    }
-
-    get jogo(){
-        return this._jogo;
     }
 
     criaPalavras(palavra){
