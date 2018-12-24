@@ -34,7 +34,9 @@ class Jogo{
 
     ganhou(){
         this._lacunas = this._palavraChavePorLetra;
-        alert("Parabéns, Ganhou o jogo!")
+        setTimeout(() => {
+            alert("que pena, você morreu")            
+        }, 300);
         $("#botoes-chute button").attr("disabled",true);
         return true;
     }
@@ -77,8 +79,11 @@ class Jogo{
     }
 
     perdeu(){        
+        setTimeout(() => {
+            alert("que pena, você morreu")            
+        }, 300);
         this._lacunas = this._palavraChavePorLetra;
-        alert("que pena, você morreu")
+        
         $("#botoes-chute button").attr("disabled",true);
     }
 
