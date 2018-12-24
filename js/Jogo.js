@@ -77,6 +77,7 @@ class Jogo{
     }
 
     perdeu(){        
+        this._lacunas = this._palavraChavePorLetra;
         alert("que pena, você morreu")
         $("#botoes-chute button").attr("disabled",true);
     }
